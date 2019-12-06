@@ -1,0 +1,29 @@
+{
+  "name": "better-arrays",
+  "version": "1.0.0",
+  "description": "More array tools for JavaScript",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanTheZero/better-arrays.git"
+  },
+  "keywords": [
+    "arrays",
+    "TypeScript",
+    "utils",
+    "ts"
+  ],
+  "author": "JonathanTheZero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JonathanTheZero/better-arrays/issues"
+  },
+  "homepage": "https://github.com/JonathanTheZero/better-arrays#readme",
+  "dependencies": {
+    "@types/jquery": "^3.3.31"
+  }
+}
