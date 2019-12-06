@@ -3,6 +3,6 @@ interface Array<T> {
     selectOneItem(): T;
     deepcopy(): Array<T>;
     toStringArray(): Array<string>;
-    toFloatArray(): Array<number>;
+    toFloatArray(includeNans?: boolean): Array<number>;
+    toIntArray(includeNans?: boolean): Array<number>;
 }
-declare let x: string[];

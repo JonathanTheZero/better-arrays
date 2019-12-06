@@ -46,11 +46,34 @@ Array.prototype.toStringArray = function () {
 /**
 * @method: Parses all values of the arrays to numbers
 * @returns: A new array only containing parsed values
+* @param includeNans: Whether the Array should keep the same size or remove them, default is false
 */
-Array.prototype.toFloatArray = function () {
+Array.prototype.toFloatArray = function (includeNans = false) {
     let x = [];
     for (let i = 0; i < this.length; ++i) {
-        x[i] = parseFloat(this[i]);
+        if (!includeNans && !isNaN(parseFloat(this[i]))) {
+            x.concat(parseFloat(this[i]));
+        }
+        else {
+            x[i] = parseFloat(this[i]);
+        }
+    }
+    return x;
+};
+/**
+* @method: Parses all values of the arrays to numbers
+* @returns: A new array only containing parsed values
+* @param includeNans: Whether the Array should keep the same size or remove them, default is false
+*/
+Array.prototype.toIntArray = function (includeNans = false) {
+    let x = [];
+    for (let i = 0; i < this.length; ++i) {
+        if (!includeNans && !isNaN(parseInt(this[i]))) {
+            x.concat(parseInt(this[i]));
+        }
+        else {
+            x[i] = parseInt(this[i]);
+        }
     }
     return x;
 };
