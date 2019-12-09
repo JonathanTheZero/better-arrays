@@ -1,5 +1,5 @@
 {
-  "name": "better-arrays",
+  "name": "better-arrays.js",
   "version": "1.0.0",
   "description": "More array tools for JavaScript",
   "main": "js/index.js",

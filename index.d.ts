@@ -1,4 +1,6 @@
-export {};
+export {
+    
+};
 declare global {
     interface Array<T> {
         selectRandom(n?: number): Array<T>;
