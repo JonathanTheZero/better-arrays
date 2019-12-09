@@ -144,5 +144,7 @@ Array.prototype.delete = function(item) {
  * @param newItem: The object that replaces the old item
  */
 Array.prototype.replace = function(oldItem, newItem) {
-    this[this.indexOf(oldItem)] = newItem;
+    for(let i = 0; i < this.length; ++i){
+        if(this[i] == oldItem) this[i] = newItem;
+    }
 }
