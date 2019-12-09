@@ -1,4 +1,6 @@
-export {};
+export {
+    
+};
 declare global {
     interface Array<T> {
         selectRandom(n?: number): Array<T>;
@@ -12,8 +14,5 @@ declare global {
         remove(item: T): void;
         delete(item: T): void;
         replace(oldItem: T, newItem: T): void;
-    }
-    class staticArray<T> extends Array<T> {
-        constructor(n: number | Array<T>);
     }
 }
