@@ -1,19 +1,11 @@
 "use strict";
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @method: Returns n elements out of the array as a new array
  * @param n: Amount of elements, default is an array with only one element
  * @returns: n elements out of the array as a new array
  */
-Array.prototype.selectRandom = function (n) {
-    if (n === void 0) { n = 1; }
+Array.prototype.selectRandom = function (n = 1) {
     if (this.length == 2) {
         return (Math.random() > 0.5) ? [this[0]] : [this[1]];
     }
@@ -39,7 +31,7 @@ Array.prototype.selectOneItem = function () {
  * @return: A deep copy of the array
  */
 Array.prototype.deepcopy = function () {
-    var clone = function (items) { return items.map(function (item) { return Array.isArray(item) ? clone(item) : item; }); };
+    const clone = (items) => items.map((item) => Array.isArray(item) ? clone(item) : item);
     return clone(this);
 };
 /**
@@ -47,15 +39,15 @@ Array.prototype.deepcopy = function () {
  * @return: A shallow copy of the array
  */
 Array.prototype.shallowCopy = function () {
-    return __spreadArrays(this);
+    return [...this];
 };
 /**
  * @method: Parses all values of the arrays to strings
  * @returns: A new array only containing stringified values
  */
 Array.prototype.toStringArray = function () {
-    var x = [];
-    for (var i = 0; i < this.length; ++i) {
+    let x = [];
+    for (let i = 0; i < this.length; ++i) {
         x[i] = this[i].toString();
     }
     return x;
@@ -65,11 +57,10 @@ Array.prototype.toStringArray = function () {
 * @returns: A new array only containing parsed values
 * @param includeNaNs: Whether the Array should keep the same size or remove them, default is false
 */
-Array.prototype.toFloatArray = function (includeNaNs) {
-    if (includeNaNs === void 0) { includeNaNs = false; }
-    var x = [];
-    for (var i = 0; i < this.length; ++i) {
-        var y = parseFloat(this[i]);
+Array.prototype.toFloatArray = function (includeNaNs = false) {
+    let x = [];
+    for (let i = 0; i < this.length; ++i) {
+        let y = parseFloat(this[i]);
         if (!includeNaNs) {
             if (!isNaN(y))
                 x.push(y);
@@ -85,11 +76,10 @@ Array.prototype.toFloatArray = function (includeNaNs) {
 * @returns: A new array only containing parsed values
 * @param includeNaNs: Whether the Array should keep the same size or remove them, default is false
 */
-Array.prototype.toIntArray = function (includeNaNs) {
-    if (includeNaNs === void 0) { includeNaNs = false; }
-    var x = [];
-    for (var i = 0; i < this.length; ++i) {
-        var y = parseInt(this[i]);
+Array.prototype.toIntArray = function (includeNaNs = false) {
+    let x = [];
+    for (let i = 0; i < this.length; ++i) {
+        let y = parseInt(this[i]);
         if (!includeNaNs) {
             if (!isNaN(y))
                 x.push(y);
@@ -104,7 +94,7 @@ Array.prototype.toIntArray = function (includeNaNs) {
  * @method: Returns an array of numbers sorted by value
  */
 Array.prototype.sortNumeric = function () {
-    this.sort(function (a, b) { return a - b; });
+    this.sort((a, b) => a - b);
 };
 /**
  * @method: Removes the given item from the array
@@ -117,8 +107,11 @@ Array.prototype.remove = function (item) {
  * @method: Deleting the given item from the array without changing the indexes of the other items
  * @param item: The value of the item that should be deleted
  */
-Array.prototype["delete"] = function (item) {
-    delete this[this.indexOf(item)];
+Array.prototype.delete = function (item) {
+    for (let i = 0; i < this.length; ++i) {
+        if (this[i] == item)
+            delete this[i];
+    }
 };
 /**
  * @method: Replacing a given item in the array
@@ -126,7 +119,7 @@ Array.prototype["delete"] = function (item) {
  * @param newItem: The object that replaces the old item
  */
 Array.prototype.replace = function (oldItem, newItem) {
-    for (var i = 0; i < this.length; ++i) {
+    for (let i = 0; i < this.length; ++i) {
         if (this[i] == oldItem)
             this[i] = newItem;
     }

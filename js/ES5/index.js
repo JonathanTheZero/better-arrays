@@ -118,7 +118,10 @@ Array.prototype.remove = function (item) {
  * @param item: The value of the item that should be deleted
  */
 Array.prototype.delete = function (item) {
-    delete this[this.indexOf(item)];
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] == item)
+            delete this[i];
+    }
 };
 /**
  * @method: Replacing a given item in the array
@@ -126,5 +129,8 @@ Array.prototype.delete = function (item) {
  * @param newItem: The object that replaces the old item
  */
 Array.prototype.replace = function (oldItem, newItem) {
-    this[this.indexOf(oldItem)] = newItem;
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] == oldItem)
+            this[i] = newItem;
+    }
 };

@@ -135,7 +135,9 @@ Array.prototype.remove = function(item) {
  * @param item: The value of the item that should be deleted
  */
 Array.prototype.delete = function(item) {
-    delete this[this.indexOf(item)];
+    for(let i = 0; i < this.length; ++i){
+        if(this[i] == item) delete this[i];
+    }
 }
 
 /**
