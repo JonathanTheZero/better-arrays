@@ -1,6 +1,6 @@
 {
   "name": "better-arrays.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "More array tools for JavaScript",
   "main": "js/index.js",
   "scripts": {
@@ -23,8 +23,5 @@
     "url": "https://github.com/JonathanTheZero/better-arrays/issues"
   },
   "homepage": "https://github.com/JonathanTheZero/better-arrays#readme",
-  "dependencies": {
-    "@types/jquery": "^3.3.31",
-    "np": "^5.2.1"
-  }
+  "dependencies": {}
 }

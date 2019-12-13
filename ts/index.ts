@@ -131,7 +131,7 @@ Array.prototype.remove = function(item) {
 }
 
 /**
- * @method: Deleting the given item from the array without changing the indexes of the other items
+ * @method: Deleting the given item from the array without changing the indices of the other items
  * @param item: The value of the item that should be deleted
  */
 Array.prototype.delete = function(item) {
