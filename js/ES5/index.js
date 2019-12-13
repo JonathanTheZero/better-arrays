@@ -30,8 +30,26 @@ Array.prototype.selectRandom = function (n) {
 /**
  * @method: Returns a random element of the array
  * @returns: one item out of the array
+ * @param minIndex: Optional parameter defining the starting index
+ * @param maxIndex: Optional parameter defining the ending index
  */
-Array.prototype.selectOneItem = function () {
+Array.prototype.selectOneItem = function (minIndex, maxIndex) {
+    if (minIndex) {
+        if (minIndex < 0)
+            throw new RangeError("selectOneItem: minIndex is smaller than 0");
+        if (minIndex > this.length)
+            throw new RangeError("selectOneItem: minIndex is bigger than the Array's length");
+        if (maxIndex) {
+            if (maxIndex < 0)
+                throw new RangeError("selectOneItem: maxIndex is smaller than 0");
+            if (maxIndex > this.length)
+                throw new RangeError("selectOneItem: maxIndex is bigger than the Array's length");
+            if (minIndex > maxIndex)
+                throw new RangeError("selectOneItem: maxIndex is bigger than minIndex");
+            return this[Math.round(Math.random() * (this.length - (minIndex + maxIndex))) + minIndex];
+        }
+        return this[Math.round(Math.random() * (this.length - minIndex)) + minIndex];
+    }
     return this[Math.round(Math.random() * this.length)];
 };
 /**
@@ -47,7 +65,7 @@ Array.prototype.deepcopy = function () {
  * @return: A shallow copy of the array
  */
 Array.prototype.shallowCopy = function () {
-    return __spreadArrays(this);
+    return new (Array.bind.apply(Array, __spreadArrays([void 0], this)))();
 };
 /**
  * @method: Parses all values of the arrays to strings
@@ -114,7 +132,7 @@ Array.prototype.remove = function (item) {
     this.splice(this.indexOf(item), 1);
 };
 /**
- * @method: Deleting the given item from the array without changing the indexes of the other items
+ * @method: Deleting the given item from the array without changing the indices of the other items
  * @param item: The value of the item that should be deleted
  */
 Array.prototype.delete = function (item) {

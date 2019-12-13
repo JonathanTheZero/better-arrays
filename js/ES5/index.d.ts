@@ -1,10 +1,11 @@
 export {
-    
+
 };
+
 declare global {
     interface Array<T> {
         selectRandom(n?: number): Array<T>;
-        selectOneItem(): T;
+        selectOneItem(minIndex?: number, maxIndex?: number): T;
         deepcopy(): Array<T>;
         shallowCopy(): Array<T>;
         toStringArray(): Array<string>;

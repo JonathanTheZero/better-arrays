@@ -5,7 +5,7 @@ export {
 declare global {
     interface Array<T> {
         selectRandom(n?: number): Array<T>;
-        selectOneItem(): T;
+        selectOneItem(minIndex?: number, maxIndex?: number): T;
         deepcopy(): Array<T>;
         shallowCopy(): Array<T>;
         toStringArray(): Array<string>;
@@ -43,8 +43,28 @@ Array.prototype.selectRandom = function (n = 1) {
 /**
  * @method: Returns a random element of the array
  * @returns: one item out of the array
+ * @param minIndex: Optional parameter defining the starting index
+ * @param maxIndex: Optional parameter defining the ending index
  */
-Array.prototype.selectOneItem = function () {
+Array.prototype.selectOneItem = function (minIndex?: number, maxIndex?: number) {
+    if(minIndex){
+        if(minIndex < 0) 
+            throw new RangeError("selectOneItem: minIndex is smaller than 0");
+        if(minIndex > this.length)
+            throw new RangeError("selectOneItem: minIndex is bigger than the Array's length");
+        if(maxIndex){
+            if(maxIndex < 0) 
+                throw new RangeError("selectOneItem: maxIndex is smaller than 0");
+            if(maxIndex > this.length) 
+                throw new RangeError("selectOneItem: maxIndex is bigger than the Array's length");
+            if(minIndex > maxIndex) 
+                throw new RangeError("selectOneItem: maxIndex is bigger than minIndex");
+            return this[Math.round(Math.random() * (this.length - (minIndex + maxIndex))) + minIndex];
+        } 
+
+        return this[Math.round(Math.random() * (this.length - minIndex)) + minIndex];    
+    }
+    
     return this[Math.round(Math.random() * this.length)];
 }
 
@@ -62,7 +82,7 @@ Array.prototype.deepcopy = function () {
  * @return: A shallow copy of the array
  */
 Array.prototype.shallowCopy = function () {
-    return [...this];
+    return new Array(...this);
 }
 
 /**
