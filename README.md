@@ -6,11 +6,12 @@ Install the module with `npm i better-arrays.js`.
 Use it in JavaScript with
 ```js
 require("better-arrays.js"); //ES6 or
-require("better-arrays.js/js/ES5/"); //ES5
+require("better-arrays.js/ES5/"); //ES5
 ```
 The library is written in TypeScript and can be used with
 ```ts
-import "better-arrays.js";
+import "better-arrays.js"; //or
+import "better-arrays.js/ts/" //to directly include the TypeScript files
 ```
 
 ## Functions:

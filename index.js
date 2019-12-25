@@ -64,11 +64,7 @@ Array.prototype.shallowCopy = function () {
  * @returns: A new array only containing stringified values
  */
 Array.prototype.toStringArray = function () {
-    let x = [];
-    for (let i = 0; i < this.length; ++i) {
-        x[i] = this[i].toString();
-    }
-    return x;
+    return this.map(String);
 };
 /**
 * @method: Parses all values of the arrays to numbers
@@ -76,7 +72,7 @@ Array.prototype.toStringArray = function () {
 * @param includeNaNs: Whether the Array should keep the same size or remove them, default is false
 */
 Array.prototype.toFloatArray = function (includeNaNs = false) {
-    let x = [];
+    let x = new Array(this.length);
     for (let i = 0; i < this.length; ++i) {
         let y = parseFloat(this[i]);
         if (!includeNaNs) {
@@ -95,7 +91,7 @@ Array.prototype.toFloatArray = function (includeNaNs = false) {
 * @param includeNaNs: Whether the Array should keep the same size or remove them, default is false
 */
 Array.prototype.toIntArray = function (includeNaNs = false) {
-    let x = [];
+    let x = new Array(this.length);
     for (let i = 0; i < this.length; ++i) {
         let y = parseInt(this[i]);
         if (!includeNaNs) {
